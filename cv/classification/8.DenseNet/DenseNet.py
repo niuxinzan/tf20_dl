@@ -43,10 +43,10 @@ class DenseBlock(layers.Layer):
         self.num_layers = num_layers
         self.growth_rate = growth_rate
         self.drop_rate = drop_rate
-        self.list_layers = []
+        self.listLayers = []
         # 一个denseBlock由多个相同的bottleNeck组成现在将他们放在一个列表中
         for _ in range(num_layers):
-            self.list_layers.append(BottleNeck(growth_rate=self.growth_rate,drop_rate=drop_rate))
+            self.listLayers.append(BottleNeck(growth_rate=self.growth_rate,drop_rate=drop_rate))
     def call(self, x):
         for layer in self.listLayers.layers:
             x = layer(x)
