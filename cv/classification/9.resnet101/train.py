@@ -12,7 +12,7 @@ im_height = 224
 im_width = 224
 batch_size = 16
 epochs = 20
-
+ 
 _R_MEAN = 123.68
 _G_MEAN = 116.78
 _B_MEAN = 103.94
