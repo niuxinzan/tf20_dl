@@ -145,6 +145,6 @@ model.fit_generator(generate_arrays_from_file(lines[:num_train], batch_size),  #
                     epochs=50,
                     initial_epoch=0,
                     callbacks=[checkpoint_period, reduce_lr, early_stopping])  # 回调
-model.save('saved_model')
+model.save('saved_model') 
 
 
