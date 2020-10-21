@@ -12,7 +12,7 @@ im_height = 224
 im_width = 224
 batch_size = 16
 epochs = 20
- 
+
 _R_MEAN = 123.68
 _G_MEAN = 116.78
 _B_MEAN = 103.94
@@ -92,7 +92,7 @@ def train_step(images, labels):
 
 
 @tf.function
-def test_step(images, labels):
+def test1_step(images, labels):
     output = model(images, training=False)  # 前向计算
     t_loss = loss_object(labels, output)  # 求每一次的目标损失值
     test_loss(t_loss)  # 求平均损失值
@@ -121,8 +121,8 @@ for epoch in range(1, epochs + 1):
 
     # 验证集测试过程
     for step in range(total_val // batch_size):
-        test_images, test_labels = next(val_data_gen)
-        test_step(test_images, test_labels)  # 在验证集上测试，只进行前向计算
+        test1_images, test1_labels = next(val_data_gen)
+        test1_step(test1_images, test1_labels)  # 在验证集上测试，只进行前向计算
     #  每训练完一个epoch后，打印显示信息
     template = 'Epoch {}, Loss: {}, Accuracy: {}, Test Loss: {}, Test Accuracy: {}'
     print(template.format(epoch,

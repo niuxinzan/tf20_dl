@@ -8,6 +8,9 @@
       <sourceFolder url="file://$MODULE_DIR$/cv" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/cv/classification/9.resnet101" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/cv/classification" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cv/segmentation" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cv/segmentation/1.segnet/networks" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cv/segmentation/1.segnet" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.6 (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
