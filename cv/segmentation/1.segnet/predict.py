@@ -15,6 +15,7 @@ import copy
 import os
 
 class_colors = [[0,0,0],[0,255,0]]
+
 NCLASSES = 2
 HEIGHT = 416
 WIDTH = 416

@@ -25,7 +25,6 @@ def decoder(feature_input,n_classes,n_upSample):
     output = (layers.ZeroPadding2D(padding=(1,1),data_format=IMAGE_ORDERING))(output)
     output = (layers.Conv2D(filters=256,kernel_size=(3,3),padding='valid',data_format=IMAGE_ORDERING))(output)
     output = (layers.BatchNormalization())(output)
-
     # 进行一次UpSampling2D，此时hw变为原来的1/4
     # 104,104,128
     for _ in range(n_upSample - 2):

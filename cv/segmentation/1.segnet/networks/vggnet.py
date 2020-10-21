@@ -41,5 +41,4 @@ def vggnet_encoder(input_height=416,input_width=416,pretrained='imagenet'):
     x = layers.Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv3')(x)
     x = layers.MaxPooling2D((2, 2), strides=(2, 2), name='block5_pool')(x)
     f5 = x
-
     return img_input, [f1, f2, f3, f4, f5]
