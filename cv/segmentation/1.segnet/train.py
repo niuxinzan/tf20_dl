@@ -11,6 +11,8 @@ from tensorflow.keras.callbacks import TensorBoard, ModelCheckpoint, ReduceLROnP
 from PIL import Image
 import numpy as np
 import os
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0, 1" # 使用第一, 二块GPU
 import sys
 sys.path.append('./')
 from networks.segnet import SegNet
@@ -81,13 +83,14 @@ def generate_arrays_from_file(lines, batch_size=4):
             # 读完一个周期后重新开始
             i = (i+1) % n
         yield (np.array(X_train), np.array(Y_train))
+@tf.function
 def loss_function(y_true,y_pred):
     loss = losses.categorical_crossentropy(y_true,y_pred)
     return  loss
 
 # 加载数据
-lines, _, _ = get_data(r'D:\data\camvid\camvid\images',r'D:\data\camvid\camvid\labels')
-# lines, _, _ = get_data(r'./camvid/camvid/images',r'./camvid/camvid/labels')
+# lines, _, _ = get_data(r'D:\data\camvid\camvid\images',r'D:\data\camvid\camvid\labels')
+lines, _, _ = get_data(r'./camvid/camvid/images',r'./camvid/camvid/labels')
 # 打乱的数据更有利于训练
 np.random.seed(10101)
 np.random.shuffle(lines)

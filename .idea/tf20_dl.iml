@@ -11,6 +11,8 @@
       <sourceFolder url="file://$MODULE_DIR$/cv/segmentation" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/cv/segmentation/1.segnet/networks" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/cv/segmentation/1.segnet" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cv/segmentation/2.SegNet-MobileNet" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cv/segmentation/2.SegNet-MobileNet/networks_mobile" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.6 (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
