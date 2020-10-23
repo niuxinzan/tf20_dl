@@ -5,8 +5,9 @@
 # @File     :mser_sift_feature_select.py
 # Created by iFantastic on 2020/10/23
 
-#基于mser+sift的特征提取方法
+# 基于mser+sift的特征提取方法
 # 对应opencv-python=3.4.2.16和opencv-contrib-python=3.4.2.16
+# https://www.it610.com/article/1296989645678125056.htm
 import cv2
 from matplotlib import pyplot as plt
 #read image
