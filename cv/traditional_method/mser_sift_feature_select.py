@@ -4,6 +4,8 @@
 # @Email    :niuxinzan@cennavi.com.cn
 # @File     :mser_sift_feature_select.py
 # Created by iFantastic on 2020/10/23
+
+#基于mser+sift的特征提取方法
 # 对应opencv-python=3.4.2.16和opencv-contrib-python=3.4.2.16
 import cv2
 #read image
