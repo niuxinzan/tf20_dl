@@ -15,9 +15,9 @@ class Conv_block(layers.Layer):
         self.conv1 = layers.Conv2D(filters=filters,kernel_size=kernel_size,strides=stride,padding='same')
         self.bn1 = layers.BatchNormalization()
         self.relu1 = layers.ReLU(6)
-    def call(self, inputs, **kwargs):
+    def call(self, inputs,training=None, **kwargs):
         x = self.conv1(inputs)
-        x = self.bn1(x)
+        x = self.bn1(x,training=training)
         x = self.relu1(x)
         return  x
 # 反转残差模块，正常的残差模块通道数是大小大，这里是小大小
@@ -42,15 +42,18 @@ class Depthwise_res_block(layers.Layer):
 
         self.conv3 = layers.Conv2D(filters=filters,kernel_size=(1,1),strides=(1,1),padding='same')
         self.bn3 = layers.BatchNormalization()
+        self.linear = tf.keras.layers.Activation(tf.keras.activations.linear)
 
-    def call(self, inputs, **kwargs):
+
+    def call(self, inputs,training=None, **kwargs):
         tmp = inputs
         x = self.conv1(inputs)
         x = self.depthwise2(x)
-        x = self.bn2(x)
+        x = self.bn2(x, training=training)
         x = self.relu2(x)
         x = self.conv3(x)
-        x = self.bn3(x)
+        x = self.bn3(x, training=training)
+        x = self.linear(x)
         if self.resdiual:
             x = layers.add([x,tmp])
         return x
