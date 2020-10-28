@@ -59,9 +59,7 @@ class Depthwise_res_block(layers.Layer):
         return x
 
 
-'''
-ValueError: You cannot build your model by calling `build` if your layers do not support float type inputs. Instead, in order to instantiate and build your model, `call` your model on real tensor data (of the correct dtype).
-'''
+
 def MobileNet_v2(label_size=10):
     inputs = layers.Input(shape=(None,28,28,1))
     x = tf.reshape(inputs, (-1, 28, 28, 1))
