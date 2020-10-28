@@ -13,8 +13,8 @@
       <sourceFolder url="file://$MODULE_DIR$/cv/segmentation/1.segnet" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/cv/segmentation/2.SegNet-MobileNet" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/cv/segmentation/2.SegNet-MobileNet/networks_mobile" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/cv/classification/10.mobilenet" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/cv/classification/10.mobilenet/mobilenetv3" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cv/classification/21.mobilenet" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cv/classification/21.mobilenet/mobilenetv3" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.6 (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
