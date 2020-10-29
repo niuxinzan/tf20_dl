@@ -68,6 +68,8 @@ class MobileNetV3Small(tf.keras.Model):
         x = self.conv2(x)
         x = self.bn2(x, training=training)
         x = h_swish(x)
+        # ValueError: Negative dimension size caused by subtracting 7 from 1 for '{{node average_pooling2d/AvgPool}} = AvgPool[T=DT_FLOAT, data_format="NHWC", ksize=[1, 7, 7, 1], padding="VALID", strides=[1, 1, 1, 1]](mul_1)' with input shapes: [?,1,1,576].
+        # 下面行报错的原因是因为输入图片的尺寸太小了，需要224，224，3的图片或者别的尺寸的图片，需要调整图片大小
         x = self.avgpool(x)
         x = self.conv3(x)
         x = h_swish(x)

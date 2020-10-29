@@ -10,7 +10,7 @@ import  numpy as np
 # mobile v1版本
 # from mobilenetv1 import MobileNet_v1
 from mobilenetv2 import MobileNet_v2
-# from mobilenetv2_backup1 import MovblieNetV2
+from mobilenet_v3_small import MobileNetV3Small
 (x,y),(x_val,y_val) = datasets.mnist.load_data()
 print('niuxinzan',np.shape(x),np.shape(y))
 x = x/255.
@@ -18,7 +18,8 @@ y = tf.one_hot(y,depth=10)
 x_val = x_val/255.
 y_val = tf.one_hot(y_val,depth=10)
 # model = MobileNet_v1(label_size=10)
-model = MobileNet_v2(label_size=10)
+# model = MobileNet_v2(label_size=10)
+model = MobileNetV3Small()
 model.build(input_shape=(None,28,28,1))
 model.summary()
 model.compile(loss='categorical_crossentropy',
