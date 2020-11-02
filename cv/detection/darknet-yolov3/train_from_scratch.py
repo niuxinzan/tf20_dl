@@ -79,9 +79,11 @@ if __name__ == '__main__':
         loss_metric.reset_states()
 
         if epoch % save_frequency == 0:
-            net.save_weights(filepath=save_model_dir+"epoch-{}".format(epoch), save_format='tf')
+            # net.save_weights(filepath=save_model_dir+"epoch-{}".format(epoch), save_format='tf')
+            net.save_weights(filepath=save_model_dir+"epoch-{}".format(epoch))
 
         if test_images_during_training:
             visualize_training_results(pictures=test_images, model=net, epoch=epoch)
 
-    net.save_weights(filepath=save_model_dir+"saved_model", save_format='tf')
+    # net.save_weights(filepath=save_model_dir+"saved_model", save_format='tf')
+    net.save_weights(filepath=save_model_dir+"saved_model")

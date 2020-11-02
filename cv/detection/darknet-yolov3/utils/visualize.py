@@ -1,5 +1,5 @@
 import cv2
-from test_on_single_image import single_image_inference
+from single_image_test import single_image_inference
 from configuration import training_results_save_dir
 
 

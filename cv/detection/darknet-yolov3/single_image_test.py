@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
     # load model
     yolo_v3 = YOLOV3(out_channels=3 * (CATEGORY_NUM + 5))
-    yolo_v3.load_weights(filepath=save_model_dir+"saved_model")
+    yolo_v3.load_weights(filepath=save_model_dir+"epoch-0")
     # inference
     image = single_image_inference(image_dir=test_picture_dir, model=yolo_v3)
 

@@ -77,8 +77,8 @@ TFLite_model_dir = "yolov3_model.tflite"
 
 test_images_during_training = True
 training_results_save_dir = "./test_results_during_training/"
-test_images = ["", ""]
+test_images = ["2007_000504.jpg","2007_000515.jpg", "2007_000528.jpg"]
 
-test_picture_dir = "./test_data/1.jpg"
+test_picture_dir = "./test_data/2007_000515.jpg"
 test_video_dir = "./test_data/test_video.mp4"
 temp_frame_dir = "./test_data/temp.jpg"
