@@ -68,17 +68,20 @@ def MobileNet_v2(label_size=10):
     # 一层不使用残差
     # input_shannel_size =(tf.shape(x))[-1]
     input_shannel_size =x.shape[-1]
+    print(input_shannel_size)
+
     x = Depthwise_res_block(filters=16,kernel=(3,3),stride=(1,1),t=1,input_shannel_size=input_shannel_size,resdiual = False)(x)
 
     for i in range(2):
         input_shannel_size = x.shape[-1]
-
+        print(input_shannel_size)
         if i==0:
             x = Depthwise_res_block(filters=24,kernel=(3,3),stride=(2,2),t=6,input_shannel_size=input_shannel_size,resdiual=False)(x)
         else:
             x = Depthwise_res_block(filters=24,kernel=(3,3),stride=(1,1),t=6,input_shannel_size=input_shannel_size,resdiual=True)(x)
     for i in range(3):
         input_shannel_size = x.shape[-1]
+        print(input_shannel_size)
 
         if i==0:
             x = Depthwise_res_block(filters=32,kernel=(3,3),stride=(2,2),t=6,input_shannel_size=input_shannel_size,resdiual=False)(x)
@@ -87,6 +90,7 @@ def MobileNet_v2(label_size=10):
 
     for i in range(4):
         input_shannel_size = x.shape[-1]
+        print(input_shannel_size)
 
         if i==0:
             x = Depthwise_res_block(filters=64,kernel=(3,3),stride=(2,2),t=6,input_shannel_size=input_shannel_size,resdiual=False)(x)
@@ -94,6 +98,7 @@ def MobileNet_v2(label_size=10):
             x = Depthwise_res_block(filters=64,kernel=(3,3),stride=(1,1),t=6,input_shannel_size=input_shannel_size,resdiual=True)(x)
     for i in range(3):
         input_shannel_size = x.shape[-1]
+        print(input_shannel_size)
 
         if i==0:
             x = Depthwise_res_block(filters=96,kernel=(3,3),stride=(1,1),t=6,input_shannel_size=input_shannel_size,resdiual=False)(x)
@@ -101,6 +106,7 @@ def MobileNet_v2(label_size=10):
             x = Depthwise_res_block(filters=96,kernel=(3,3),stride=(1,1),t=6,input_shannel_size=input_shannel_size,resdiual=True)(x)
     for i in range(3):
         input_shannel_size = x.shape[-1]
+        print(input_shannel_size)
 
         if i==0:
             x = Depthwise_res_block(filters=160,kernel=(3,3),stride=(2,2),t=6,input_shannel_size=input_shannel_size,resdiual=False)(x)
@@ -108,6 +114,7 @@ def MobileNet_v2(label_size=10):
             x = Depthwise_res_block(filters=160,kernel=(3,3),stride=(1,1),t=6,input_shannel_size=input_shannel_size,resdiual=True)(x)
     for i in range(1):
         input_shannel_size = x.shape[-1]
+        print(input_shannel_size)
 
         if i==0:
             x = Depthwise_res_block(filters=320,kernel=(3,3),stride=(1,1),t=6,input_shannel_size=input_shannel_size,resdiual=False)(x)
@@ -124,19 +131,24 @@ def MobileNet_v2(label_size=10):
     return model
 '''
 ValueError: You cannot build your model by calling `build` if your layers do not support float type inputs. Instead, in order to instantiate and build your model, `call` your model on real tensor data (of the correct dtype).
+重启下就好了呢！！
 '''
 class MobileNet_v21(tf.keras.Model):
     def __init__(self,label_size=10):
+        # 写在这里的变量才是会被训练的变量，因此需要将所有要训练的算子写在init下面
+        # 因为这里的算子，input_channel_size是个变化量，不方便写成子model的方式，因此用方法的实现方式写的，
+        # 详情见上面的方法def MobileNet_v2(label_size=10)
         super(MobileNet_v21,self).__init__()
         self.label_size = label_size
+        self.Depthwise_res_block1=Depthwise_res_block(filters=16,kernel=(3,3),stride=(1,1),t=1,input_shannel_size=16,resdiual = False)
     def call(self, inputs, **kwargs):
-        x = tf.reshape(inputs, (-1, 28, 28, 1))
-        x = Conv_block(filters=32,kernel_size=(3,3),stride=(2,2))(x)
+        x = Conv_block(filters=32,kernel_size=(3,3),stride=(2,2))(inputs)
 
         # 一层不使用残差,下面的写法要求输入是numpy
         # input_shannel_size =(tf.shape(x))[-1]
         input_shannel_size =x.shape[-1]
-        x = Depthwise_res_block(filters=16,kernel=(3,3),stride=(1,1),t=1,input_shannel_size=input_shannel_size,resdiual = False)(x)
+        # x = Depthwise_res_block(filters=16,kernel=(3,3),stride=(1,1),t=1,input_shannel_size=input_shannel_size,resdiual = False)(x)
+        x = self.Depthwise_res_block1(x)
 
         for i in range(2):
             input_shannel_size = x.shape[-1]
@@ -190,5 +202,8 @@ class MobileNet_v21(tf.keras.Model):
         x = layers.Softmax()(x)
         return x
 
+yolov3 = MobileNet_v2(label_size=10)
+yolov3.build(input_shape=(None,28,28,1))
+yolov3.summary()
 
 

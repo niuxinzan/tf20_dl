@@ -47,10 +47,10 @@ class DenseBlock(layers.Layer):
         # 一个denseBlock由多个相同的bottleNeck组成现在将他们放在一个列表中
         for _ in range(num_layers):
             self.listLayers.append(BottleNeck(growth_rate=self.growth_rate,drop_rate=drop_rate))
-    def call(self, x):
+    def call(self, inputs,training =None,**kwargs):
         for layer in self.listLayers.layers:
-            x = layer(x)
-        return x
+            x1 = layer(inputs)
+        return x1
 class TransitionLayer(layers.Layer):
     # out_channels 代表输出通道
     def __init__(self,out_channels):
@@ -118,8 +118,7 @@ class DenseNet(tf.keras.Model):
         self.avgpool = layers.GlobalAveragePooling2D()
         # 全连接层，进行10分类
         self.fc = layers.Dense(units=10, activation=tf.keras.activations.softmax)
-
-    def call(self, inputs):
+    def call(self, inputs, training=None, **kwargs):
         x = self.conv(inputs)
         x = self.bn(x)
         x = tf.keras.activations.relu(x)

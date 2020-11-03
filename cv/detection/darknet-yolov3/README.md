@@ -67,3 +67,5 @@ Create a new file *data.txt* in the data_process directory and write the label o
 3. [blog 1](https://www.cnblogs.com/wangxinzhe/p/10592184.html), [blog 2](https://www.cnblogs.com/wangxinzhe/p/10648465.html), [blog 3](https://blog.csdn.net/leviopku/article/details/82660381), [blog 4](https://blog.csdn.net/qq_37541097/article/details/81214953), [blog 5](https://blog.csdn.net/Gentleman_Qin/article/details/84349144), [blog 6](https://blog.csdn.net/qq_34199326/article/details/84109828), [blog 7](https://blog.csdn.net/weixin_38145317/article/details/95349201)
 5. 李金洪. 深度学习之TensorFlow工程化项目实战[M]. 北京: 电子工业出版社, 2019: 343-375
 6. https://zhuanlan.zhihu.com/p/49556105
+
+整体框架写的没问题，但是darknet的实现跟论文不相符

@@ -1,8 +1,8 @@
 # training
 EPOCHS = 1000
 BATCH_SIZE = 8
-load_weights_before_training = False
-load_weights_from_epoch = 10
+load_weights_before_training = True
+load_weights_from_epoch = 0
 
 # input image
 IMAGE_HEIGHT = 416

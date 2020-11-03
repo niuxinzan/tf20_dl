@@ -11,8 +11,10 @@ class GenerateLabel():
         self.input_shape = np.array(input_shape, dtype=np.int32)
         self.anchors = np.array(COCO_ANCHORS, dtype=np.float32)
         self.batch_size = self.true_boxes.shape[0]
+        print( self.true_boxes.shape)
 
     def generate_label(self):
+        # 每一张图片都会生成20个标签框，填不满的标签都是，标签框已经转换为416*416图片大小的框
         center_xy = (self.true_boxes[..., 0:2] + self.true_boxes[..., 2:4]) // 2  # shape : [B, N, 2]
         box_wh = self.true_boxes[..., 2:4] - self.true_boxes[..., 0:2]     # shape : [B, N, 2]
         self.true_boxes[..., 0:2] = center_xy / self.input_shape   # Normalization
