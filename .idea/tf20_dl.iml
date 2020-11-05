@@ -25,6 +25,7 @@
       <sourceFolder url="file://$MODULE_DIR$/cv/detection/yolov3_first_select/mnist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/cv/detection/yolov3_first_select/IMAGES" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/cv/detection/yolov3_first_select/checkpoints" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cv/detection/darknet-yolov3" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.6 (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
