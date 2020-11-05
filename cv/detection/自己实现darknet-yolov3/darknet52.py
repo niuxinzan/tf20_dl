@@ -139,6 +139,6 @@ class DarkNet52(tf.keras.Model):
         conv_sobj_branch = self.Conv_3_1(conv)
         conv_sbbox = self.Conv_3_2(conv_sobj_branch)
         return [conv_lbbox,conv_mbbox,conv_sbbox]
-yolov3 = DarkNet52(num_class=20)
+yolov3 = DarkNet52(num_class=80)
 yolov3.build(input_shape=(None,416,416,3))
 yolov3.summary()

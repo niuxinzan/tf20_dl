@@ -15,7 +15,7 @@ import random
 import numpy as np
 import tensorflow as tf
 from yolov3.utils import read_class_names, image_preprocess
-from yolov3.yolov3 import bbox_iou
+from yolov3.Yolov3 import bbox_iou
 from yolov3.configs import *
 
 

@@ -18,9 +18,9 @@ from loss import YoloLoss
 TXT_DIR="./data.txt"
 
 gpus = tf.config.list_physical_devices(device_type="GPU")
-if gpus:
-    for gpu in gpus:
-        tf.config.experimental.set_memory_growth(device=gpu, enable=True)
+# if gpus:
+#     for gpu in gpus:
+#         tf.config.experimental.set_memory_growth(device=gpu, enable=True)
 
 # dataset
 def get_length_of_dataset(dataset):
