@@ -16,13 +16,13 @@ if __name__ == '__main__':
 
     #构建数据集对象
     train_dataset=tf.data.Dataset.from_tensor_slices((x,y)) #构建数据集对象
-    train_dataset= train_dataset.batch(32).repeat(10)
+    train_dataset= train_dataset.batch(32).repeat(50)
 
     #搭建神经网络
     network=Sequential([layers.Dense(256,activation='relu'),
                         layers.Dense(128,activation='relu'),
                         layers.Dense(10)])
-    network.build(input_shape=(None,28*28))
+    network.build(input_shape=(28*28))
     network.summary()
 
     #训练神经网络（计算梯度、迭代更新网络参数）
@@ -40,10 +40,11 @@ if __name__ == '__main__':
             grads =tape.gradient(loss,network.trainable_variables) #计算网络中的各个参数的梯度
             optimizer.apply_gradients(zip(grads,network.trainable_variables)) #更新网络参数
             acc_meter.update_state(tf.argmax(out,axis=1),y) #比较预测值与标签，并计算精度
-        if step%200 ==0:
+        if step%100 ==0:
             print('Step:',step,' loss:',float(loss),' Accuracy:',acc_meter.result().numpy())
-            network.save('model/')
+            network.save('d:/data/digital_model/')
         acc_meter.reset_states() #每一个step后，准确率清零
+
 
 
 
